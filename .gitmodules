@@ -1,0 +1,6 @@
+[submodule "matlab-emacs"]
+	path = matlab-emacs
+	url = https://github.com/ruediger/matlab-emacs.git
+[submodule "ESS"]
+	path = ESS
+	url = https://github.com/emacs-ess/ESS.git
