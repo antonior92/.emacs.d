@@ -3,3 +3,10 @@
 
 # Packaging
 .cask
+
+# others
+auto-save-list
+snippets
+smex-items
+ido.last
+

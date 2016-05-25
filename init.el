@@ -205,7 +205,6 @@
 (load-library "matlab-load")
 (custom-set-variables
  '(matlab-shell-command-switches '("-nodesktop -nosplash")))
-(matlab-cedet-setup)
 
 
 ;; Backup files
@@ -218,10 +217,6 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
-;; ESS
-(setq load-path (cons "/usr/share/emacs/site-lisp/ess" load-path))
-(require 'ess-site)
-(setq inferior-julia-program-name "/usr/bin/julia")
 
 
 ;; Markdown mode
