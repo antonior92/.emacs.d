@@ -45,6 +45,7 @@
 (depends-on "julia-mode")
 (depends-on "julia-shell")
 (depends-on "let-alist")
+(depends-on "magit")
 (depends-on "markdown-mode")
 (depends-on "multiple-cursors")
 (depends-on "package-build")
