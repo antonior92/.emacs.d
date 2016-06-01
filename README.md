@@ -35,6 +35,7 @@ $ ln -s //location//to//cask.el ~/.cask
 Since I am using [elpy](https://github.com/jorgenschaefer/elpy) as my Python enviroment some python dependencies may be required.
 
 ```bash
+$ pip install virtualenv
 $ pip install ipython
 $ # Either of these
 $ pip install rope
