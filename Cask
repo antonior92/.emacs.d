@@ -1,6 +1,6 @@
 (source "elpy" "http://jorgenschaefer.github.io/packages/")
-(source "gnu" "http://elpa.gnu.org/packages/")
 (source "melpa" "http://melpa.milkbox.net/packages/")
+(source gnu)
 
 (depends-on "anaconda-mode")
 (depends-on "anaphora")
@@ -26,6 +26,7 @@
 (depends-on "elpy")
 (depends-on "epc")
 (depends-on "epl")
+(depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "f")
 (depends-on "find-file-in-project")

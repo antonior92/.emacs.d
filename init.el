@@ -28,6 +28,10 @@
 (require 'pallet)
 (pallet-mode t)
 
+;; exec-path-from-shell
+(require 'exec-path-from-shell) ;; if not using the ELPA package
+(exec-path-from-shell-initialize)
+
 
 ;; Add linum mode for programming
 (add-hook 'prog-mode-hook 'linum-mode)
