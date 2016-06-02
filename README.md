@@ -23,15 +23,17 @@ $ cd ~/.emacs.d
 $ cask install
 ```
 
-4) **Add cask.el to the search path**
+4) **Add cask.el folder to the search path**
 
-Create an symlink to cask.el
+Create an symlink to cask.el folder
 ```bash
-$ ln -s //location//to//cask.el ~/.cask
+$ ln -s //location//to//cask.el//folder ~/.cask
 ```
 
-5) **Solving Python dependencies**
 
+) **Solving Python dependencies**
+
+You should hav python installed in order to avoid errors using this emacs configuration.
 Since I am using [elpy](https://github.com/jorgenschaefer/elpy) as my Python enviroment some python dependencies may be required.
 
 ```bash
@@ -52,5 +54,23 @@ $ pip install yapf
 
 also make sure the ipython binary is in your $PATH.
 
+*OBS:* If you don't want to use python you should comment the following lines from "~/.emacs.d/init.el"
+```bash
+;;  Install elpy-mode
+(elpy-enable)
+(elpy-use-ipython)
+(setq elpy-rpc-backend "jedi")
+```
 
+
+## Aditional Features
+
+* **LaTeX support**
+[AuCTeX](https://www.gnu.org/software/auctex/) as a LaTeX enviroment.
+
+* **Matlab support**
+[Matlab/Emacs integration](http://matlab-emacs.sourceforge.net). Guarantee that "matlab" binary is on your $PATH.
+
+* **Jupyter notebook support**
+[Emacs Ipython Notebook](https://github.com/tkf/emacs-ipython-notebook) for read jupyter notebooks from emacs.
 

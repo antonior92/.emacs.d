@@ -79,13 +79,6 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
-
-;; Instal workgroups2 for emacs (a session manager)
-;;(require 'workgroups2)
-;;(workgroups-mode 1)
-
-
-
 ;; Install duplicate thing
 (require 'duplicate-thing)
 (global-set-key (kbd "M-c") 'duplicate-thing)
@@ -105,14 +98,9 @@
 (yas-global-mode 1)
 
 
-
-
-
 ;; Instal flycheck-tip
 (require 'flycheck-tip)
 (flycheck-tip-use-timer 'verbose)
-
-
 
 
 ;; Install Golden Ratio
