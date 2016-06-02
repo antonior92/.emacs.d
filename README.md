@@ -65,12 +65,13 @@ also make sure the ipython binary is in your $PATH.
 
 ## Aditional Features
 
-* **LaTeX support**
+* **LaTeX support:**
 [AuCTeX](https://www.gnu.org/software/auctex/) as a LaTeX enviroment.
 
-* **Matlab support**
-[Matlab/Emacs integration](http://matlab-emacs.sourceforge.net). Guarantee that "matlab" binary is on your $PATH.
+* **Matlab support:**
+[Matlab/Emacs integration](http://matlab-emacs.sourceforge.net). 
+(To this support to work you should make sure the "matlab" binary is in your $PATH.)
 
-* **Jupyter notebook support**
+* **Jupyter notebook support:**
 [Emacs Ipython Notebook](https://github.com/tkf/emacs-ipython-notebook) for read jupyter notebooks from emacs.
 
