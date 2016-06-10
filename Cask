@@ -62,6 +62,7 @@
 (depends-on "s")
 (depends-on "shut-up")
 (depends-on "smex")
+(depends-on "speed-type")
 (depends-on "undo-tree")
 (depends-on "volatile-highlights")
 (depends-on "websocket")
