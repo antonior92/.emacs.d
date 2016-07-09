@@ -11,16 +11,9 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Loading theme misterioso
+;; Loading theme wombat
 (load-theme 'wombat)
 
-
-
-;; Seting up melpa repository
-;;(require 'package)
-;;(package-initialize)
-;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;;(add-to-list 'package-archives '("elpy" . "http://jorgenschaefer.github.io/packages/") t)
 
 ;; Cask
 (require 'cask "~/.cask/cask.el")
@@ -74,9 +67,6 @@
 (require 'smex)
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
-
-;; Replace list buffers by ibuffer (a more powerfull tool to deal with buffers)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 
 ;; Install duplicate thing
@@ -149,13 +139,6 @@
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 
-;; pyEnv mode
-;(pyenv-mode)
-
-;; Install anaconda mode (python)
-;(add-hook 'python-mode-hook 'eldoc-mode)
-;(add-hook 'python-mode-hook 'anaconda-mode)
-
 ;;  Install elpy-mode
 (elpy-enable)
 (elpy-use-ipython)
@@ -187,9 +170,6 @@
 
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
-;; Add company-auctex
-;;(require 'company-auctex)
-;;(company-auctex-init)
 
 
 ;; Add matlab mode
@@ -223,3 +203,35 @@
 (require 'ein)
 (setq ein:use-auto-complete-superpack t)
 (add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
+
+
+;; Latex table of contents
+(require 'tex-site)
+(autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
+(autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" nil)
+(autoload 'reftex-citation "reftex-cite" "Make citation" nil)
+(autoload 'reftex-index-phrase-mode "reftex-index" "Phrase Mode" t)
+(add-hook 'latex-mode-hook 'turn-on-reftex) ; with Emacs latex mode
+;; (add-hook 'reftex-load-hook 'imenu-add-menubar-index)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+
+(setq LaTeX-eqnarray-label "eq"
+LaTeX-equation-label "eq"
+LaTeX-figure-label "fig"
+LaTeX-table-label "tab"
+LaTeX-myChapter-label "chap"
+TeX-auto-save t
+TeX-newline-function 'reindent-then-newline-and-indent
+TeX-parse-self t
+TeX-style-path
+'("style/" "auto/"
+"/usr/share/emacs21/site-lisp/auctex/style/"
+"/var/lib/auctex/emacs21/"
+"/usr/local/share/emacs/site-lisp/auctex/style/")
+LaTeX-section-hook
+'(LaTeX-section-heading
+LaTeX-section-title
+LaTeX-section-toc
+LaTeX-section-section
+LaTeX-section-label))
+(setq reftex-ref-macro-prompt nil)
