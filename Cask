@@ -44,6 +44,7 @@
 (depends-on "ivy")
 (depends-on "jedi")
 (depends-on "jedi-core")
+(depends-on "jedi-direx")
 (depends-on "json-rpc")
 (depends-on "julia-mode")
 (depends-on "julia-shell")
