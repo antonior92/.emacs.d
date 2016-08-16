@@ -14,7 +14,6 @@
 ;; Loading theme wombat
 (load-theme 'wombat)
 
-
 ;; Cask
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
@@ -235,3 +234,9 @@ LaTeX-section-toc
 LaTeX-section-section
 LaTeX-section-label))
 (setq reftex-ref-macro-prompt nil)
+
+;; key bindings
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
