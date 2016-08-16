@@ -243,3 +243,4 @@ LaTeX-section-label))
 ;; popwin
 (require 'popwin)
 (popwin-mode 1)
+(push '("*Occur*" :width 0.3 :position right) popwin:special-display-config)
