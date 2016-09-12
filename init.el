@@ -3,7 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
+ '(elpy-test-runner (quote elpy-test-nose-runner))
+ '(inhibit-startup-screen t)
+ '(matlab-shell-command-switches (quote ("-nodesktop -nosplash"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -92,38 +94,6 @@
 (flycheck-tip-use-timer 'verbose)
 
 
-;; Install Golden Ratio
-(require 'golden-ratio)
-
-(add-to-list 'golden-ratio-exclude-modes "ediff-mode")
-(add-to-list 'golden-ratio-exclude-modes "helm-mode")
-(add-to-list 'golden-ratio-exclude-modes "dired-mode")
-(add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)
-
-(defun pl/helm-alive-p ()
-  (if (boundp 'helm-alive-p)
-      (symbol-value 'helm-alive-p)))
-
-(setq golden-ratio-exclude-modes '("ediff-mode"
-                                   "gud-mode"
-                                   "gdb-locals-mode"
-                                   "gdb-registers-mode"
-                                   "gdb-breakpoints-mode"
-                                   "gdb-threads-mode"
-                                   "gdb-frames-mode"
-                                   "gdb-inferior-io-mode"
-                                   "gud-mode"
-                                   "gdb-inferior-io-mode"
-                                   "gdb-disassembly-mode"
-                                   "gdb-memory-mode"
-                                   "magit-log-mode"
-                                   "magit-reflog-mode"
-                                   "magit-status-mode"
-                                   "IELM"
-                                   "eshell-mode" "dired-mode"))
-
-(golden-ratio-mode)
-
 ;; Install irony mode (c++)
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
@@ -173,20 +143,36 @@
 ;; Add matlab mode
 (add-to-list 'load-path "~/.emacs.d/matlab-emacs")
 (load-library "matlab-load")
-(custom-set-variables
- '(matlab-shell-command-switches '("-nodesktop -nosplash")))
+
 
 
 ;; Backup files
-(setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-    '(("." . "~/.saves"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
+;;(setq
+;;   backup-by-copying t      ; don't clobber symlinks
+;;   backup-directory-alist
+;;    '(("." . "~/.saves"))    ; don't litter my fs tree
+;;   delete-old-versions t
+;;   kept-new-versions 6
+;;   kept-old-versions 2
+;;   version-control t)       ; use versioned backups
 
+
+;; Save all tempfiles in $TMPDIR/emacs$UID/                                                        
+(defconst emacs-tmp-dir  "~/.saves/")
+(setq backup-directory-alist
+    `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+    `((".*" ,emacs-tmp-dir t)))
+
+(message "Deleting old backup files...")
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files emacs-tmp-dir t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message "%s" file)
+      (delete-file file))))
 
 
 ;; Markdown mode
@@ -244,3 +230,4 @@ LaTeX-section-label))
 (require 'popwin)
 (popwin-mode 1)
 (push '("*Occur*" :width 0.3 :position right) popwin:special-display-config)
+(push '("*compilation*" :width 0.3 :position right) popwin:special-display-config)
