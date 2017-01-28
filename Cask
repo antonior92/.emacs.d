@@ -2,6 +2,8 @@
 (source "melpa" "http://melpa.milkbox.net/packages/")
 (source gnu)
 
+
+(depends-on "pallet")
 (depends-on "anaconda-mode")
 (depends-on "anaphora")
 (depends-on "auctex")
@@ -54,7 +56,6 @@
 (depends-on "markdown-mode")
 (depends-on "multiple-cursors")
 (depends-on "package-build")
-(depends-on "pallet")
 (depends-on "pkg-info")
 (depends-on "popup")
 (depends-on "popwin")

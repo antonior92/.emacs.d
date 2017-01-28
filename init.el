@@ -1,3 +1,10 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -91,7 +98,6 @@
 
 ;; Instal flycheck-tip
 (require 'flycheck-tip)
-(flycheck-tip-use-timer 'verbose)
 
 
 ;; Install irony mode (c++)
@@ -156,23 +162,6 @@
 ;;   kept-old-versions 2
 ;;   version-control t)       ; use versioned backups
 
-
-;; Save all tempfiles in $TMPDIR/emacs$UID/                                                        
-(defconst emacs-tmp-dir  "~/.saves/")
-(setq backup-directory-alist
-    `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-    `((".*" ,emacs-tmp-dir t)))
-
-(message "Deleting old backup files...")
-(let ((week (* 60 60 24 7))
-      (current (float-time (current-time))))
-  (dolist (file (directory-files emacs-tmp-dir t))
-    (when (and (backup-file-name-p file)
-               (> (- current (float-time (fifth (file-attributes file))))
-                  week))
-      (message "%s" file)
-      (delete-file file))))
 
 
 ;; Markdown mode
