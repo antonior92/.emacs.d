@@ -12,7 +12,10 @@
  ;; If there is more than one, they won't work right.
  '(elpy-test-runner (quote elpy-test-nose-runner))
  '(inhibit-startup-screen t)
- '(matlab-shell-command-switches (quote ("-nodesktop -nosplash"))))
+ '(matlab-shell-command-switches (quote ("-nodesktop -nosplash")))
+ '(package-selected-packages
+   (quote
+    (ess company-math workgroups2 volatile-highlights undo-tree swiper speed-type smex python-mode pyenv-mode popwin pallet multiple-cursors markdown-mode magit julia-shell json-rpc jedi-direx ido-ubiquitous gscholar-bibtex golden-ratio ggtags flycheck-tip flycheck-irony expand-region exec-path-from-shell elpy el-spy ein-mumamo duplicate-thing company-jedi company-irony-c-headers company-irony company-c-headers company-auctex company-anaconda))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -144,7 +147,8 @@
 
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
-
+;; Company math
+(add-to-list 'company-backends 'company-math-symbols-unicode)
 
 ;; Add matlab mode
 (add-to-list 'load-path "~/.emacs.d/matlab-emacs")
@@ -220,3 +224,32 @@ LaTeX-section-label))
 (popwin-mode 1)
 (push '("*Occur*" :width 0.3 :position right) popwin:special-display-config)
 (push '("*compilation*" :width 0.3 :position right) popwin:special-display-config)
+
+
+;; Julia Mode
+(require 'julia-mode)
+(require 'julia-shell)
+
+(require 'ess-site)
+(require 'ess-eldoc)
+(setq inferior-julia-program-name "julia")
+(setq ess-use-auto-complete t)
+(setq ess-tab-complete-in-script t)
+
+
+(setq ac-modes '(ess-julia-mode julia-mode inferior-ess-mode))
+
+(require 'auto-complete)
+(require 'auto-complete-config)
+(setq ess-use-auto-complete 'script-only)
+(define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
+(define-key ac-completing-map "\M-n" nil) ;; was ac-next
+(define-key ac-completing-map "\M-p" nil) ;; was ac-previous
+(define-key ac-completing-map "\M-," 'ac-next)
+(define-key ac-completing-map "\M-k" 'ac-previous)
+(define-key ac-completing-map "\t" 'ac-complete)
+(define-key ac-completing-map [tab] 'ac-complete)
+(define-key ac-completing-map [return] nil)
+
+(ac-config-default)
+
