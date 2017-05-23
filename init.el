@@ -10,12 +10,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(elpy-test-runner (quote elpy-test-nose-runner))
+ '(TeX-source-correlate-method (quote synctex))
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t)
+ '(elpy-test-runner (quote elpy-test-discover-runner))
  '(inhibit-startup-screen t)
  '(matlab-shell-command-switches (quote ("-nodesktop -nosplash")))
  '(package-selected-packages
    (quote
-    (ess company-math workgroups2 volatile-highlights undo-tree swiper speed-type smex python-mode pyenv-mode popwin pallet multiple-cursors markdown-mode magit julia-shell json-rpc jedi-direx ido-ubiquitous gscholar-bibtex golden-ratio ggtags flycheck-tip flycheck-irony expand-region exec-path-from-shell elpy el-spy ein-mumamo duplicate-thing company-jedi company-irony-c-headers company-irony company-c-headers company-auctex company-anaconda))))
+    (pdf-tools ess company-math workgroups2 volatile-highlights undo-tree swiper speed-type smex python-mode pyenv-mode popwin pallet multiple-cursors markdown-mode magit julia-shell json-rpc jedi-direx ido-ubiquitous gscholar-bibtex golden-ratio ggtags flycheck-tip flycheck-irony expand-region exec-path-from-shell elpy el-spy ein-mumamo duplicate-thing company-jedi company-irony-c-headers company-irony company-c-headers company-auctex company-anaconda))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -253,3 +256,14 @@ LaTeX-section-label))
 
 (ac-config-default)
 
+;; pdf-tools
+(pdf-tools-install)
+
+;; to use pdfview with auctex
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+      TeX-source-correlate-start-server t) ;; not sure if last line is neccessary
+
+;; to have the buffer refresh after compilation
+(add-hook 'TeX-after-compilation-finished-functions
+	  #'TeX-revert-document-buffer)
