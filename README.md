@@ -63,3 +63,10 @@ pip install autopep8
 # and yapf for code formatting
 pip install yapf
 ```
+
+* **PDF reader**
+I am using [PDFtools](https://github.com/politza/pdf-tools) as PDF reader.
+Activate the package in your first initialization of emacs:
+```
+M-x pdf-tools-install RET
+```
