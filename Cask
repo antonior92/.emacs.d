@@ -1,7 +1,8 @@
 (source "elpy" "http://jorgenschaefer.github.io/packages/")
-(source "melpa" "http://melpa.milkbox.net/packages/")
+(source melpa)
 (source gnu)
 
+(depends-on "pallet")
 (depends-on "anaconda-mode")
 (depends-on "anaphora")
 (depends-on "async")
