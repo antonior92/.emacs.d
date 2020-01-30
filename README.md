@@ -5,16 +5,17 @@ My emacs configuration file.
 
 1) **Install Cask**
 
-This emacs configuration package use Cask as a package management. See instructions of how to install Cask at <https://github.com/cask/cask/blob/master/README.md>
+This emacs configuration package use Cask as a package management. See instructions of how to install Cask at <https://github.com/cask/cask/blob/master/README.md>.
+On MacOSX, there is the option of install usign homebrew. I would recommend the standard installation, since I had problems in the past with the homebrew instalation.
 
 2) **Download Emacs configuration file**
 
 Download Emacs configuration file from this github repositorie.
 ```bash
 cd ~/
-git clone --recursive git@github.com:antonior92/.emacs.d.git
+git clone git@github.com:antonior92/.emacs.d.git
 # or, alternatively:
-# git clone --recursive https://github.com/antonior92/.emacs.d.git
+# git clone https://github.com/antonior92/.emacs.d.git
 ```
 
 3) **Use Cask to install the needed packages**
@@ -25,9 +26,9 @@ cd ~/.emacs.d
 cask install
 ```
 
-4) **Add cask.el folder to the search path**
+4) ** (Optional) Add cask.el folder to the search path**
 
-Create an symlink to cask.el folder
+Create an symlink to cask folder in home (if not already there):
 ```bash
 ln -s //location//to//cask.el//folder ~/.cask
 ```
@@ -37,36 +38,12 @@ ln -s //location//to//cask.el//folder ~/.cask
 * **LaTeX support:**
 [AuCTeX](https://www.gnu.org/software/auctex/) as a LaTeX enviroment.
 
-* **Matlab support:**
-[Matlab/Emacs integration](http://matlab-emacs.sourceforge.net). 
-(Make sure the "matlab" binary is in your $PATH.)
-
-* **Jupyter notebook support:**
-[Emacs Ipython Notebook](https://github.com/tkf/emacs-ipython-notebook) for read jupyter notebooks from emacs.
-
-* **Python support**
-
-I am using [elpy](https://github.com/jorgenschaefer/elpy) as my Python enviroment.
-Install the required Python packages:
-
-```bash
-pip install virtualenv
-# Either of these
-pip install rope
-pip install jedi
-# flake8 for code checks
-pip install flake8
-# importmagic for automatic imports
-pip install importmagic
-# and autopep8 for automatic PEP8 formatting
-pip install autopep8
-# and yapf for code formatting
-pip install yapf
-```
-
 * **PDF reader**
 I am using [PDFtools](https://github.com/politza/pdf-tools) as PDF reader.
 Activate the package in your first initialization of emacs:
 ```
 M-x pdf-tools-install RET
 ```
+
+* **Magit**
+[Magit](https://magit.vc/) as an git interface inside emacs.
