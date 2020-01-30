@@ -42,12 +42,10 @@
 
 ;; Add linum mode for programming
 (add-hook 'prog-mode-hook 'linum-mode)
-(add-hook 'matlab-mode-hook 'linum-mode)
 (add-hook 'LaTeX-mode-hook 'linum-mode)
 
 ;; Add Eletric Pair Mode for programming
 (add-hook 'prog-mode-hook 'electric-pair-mode)
-(add-hook 'matlab-mode-hook 'electric-pair-mode)
 (add-hook 'LaTeX-mode-hook 'electric-pair-mode)
 
 
@@ -105,25 +103,6 @@
 ;; Instal flycheck-tip
 (require 'flycheck-tip)
 
-
-;; Install irony mode (c++)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
-
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-
-;;  Install elpy-mode
-(elpy-enable)
-(setq elpy-rpc-backend "jedi")
-
 ;; Install flycheck
 (require 'flycheck)
 
@@ -138,24 +117,9 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; Add company-irony
-(require 'company-irony)
-(require 'company-irony-c-headers)
-(require 'company-c-headers)
-(require 'company-anaconda)
-
-(eval-after-load 'company
-  '(add-to-list
-    'company-backends '(company-c-headers company-irony-c-headers company-irony company-anaconda)))
-
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 ;; Company math
 (add-to-list 'company-backends 'company-math-symbols-unicode)
-
-;; Add matlab mode
-(add-to-list 'load-path "~/.emacs.d/matlab-emacs")
-(load-library "matlab-load")
 
 
 
@@ -178,11 +142,6 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-
-;; Ipython
-(require 'ein)
-(setq ein:use-auto-complete-superpack t)
-(add-hook 'ein:connect-mode-hook 'ein:jedi-setup)
 
 
 ;; Latex table of contents
@@ -228,33 +187,6 @@ LaTeX-section-label))
 (push '("*Occur*" :width 0.3 :position right) popwin:special-display-config)
 (push '("*compilation*" :width 0.3 :position right) popwin:special-display-config)
 
-
-;; Julia Mode
-(require 'julia-mode)
-(require 'julia-shell)
-
-(require 'ess-site)
-(require 'ess-eldoc)
-(setq inferior-julia-program-name "julia")
-(setq ess-use-auto-complete t)
-(setq ess-tab-complete-in-script t)
-
-
-(setq ac-modes '(ess-julia-mode julia-mode inferior-ess-mode))
-
-(require 'auto-complete)
-(require 'auto-complete-config)
-(setq ess-use-auto-complete 'script-only)
-(define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
-(define-key ac-completing-map "\M-n" nil) ;; was ac-next
-(define-key ac-completing-map "\M-p" nil) ;; was ac-previous
-(define-key ac-completing-map "\M-," 'ac-next)
-(define-key ac-completing-map "\M-k" 'ac-previous)
-(define-key ac-completing-map "\t" 'ac-complete)
-(define-key ac-completing-map [tab] 'ac-complete)
-(define-key ac-completing-map [return] nil)
-
-(ac-config-default)
 
 ;; pdf-tools
 (pdf-tools-install)
