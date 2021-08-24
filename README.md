@@ -7,8 +7,15 @@ In MacOSX, https://emacsformacosx.com/ is a good option. Remember to look in htt
 
 1) **Install Cask**
 
-This emacs configuration package use Cask as a package management. See instructions of how to install Cask at <https://github.com/cask/cask/blob/master/README.md>.
-On MacOSX, there is the option of install usign homebrew. I would recommend the standard installation, since I had problems in the past with the homebrew instalation.
+This emacs configuration package use Cask as a package management. See instructions of how to install Cask at <https://github.com/cask/cask>.
+On MacOSX, there is the option of install usign homebrew. I would recommend the standard installation, since I had problems in the past with the homebrew instalation. Last time I used
+
+```
+git clone https://github.com/cask/cask .cask
+cd .cask
+make
+```
+And added `./cask/bin` to `PATH` through `.bash_profile`.
 
 2) **Download Emacs configuration file**
 
