@@ -3,6 +3,8 @@ My emacs configuration file.
 
 ## Instalation Guide
 
+In MacOSX, https://emacsformacosx.com/ is a good option. Remember to look in https://emacsformacosx.com/tips to see how to make it runnable from the command line.
+
 1) **Install Cask**
 
 This emacs configuration package use Cask as a package management. See instructions of how to install Cask at <https://github.com/cask/cask/blob/master/README.md>.
